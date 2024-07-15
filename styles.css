@@ -20,6 +20,7 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+
 body, html {
     margin: 0;
     padding: 0;
@@ -33,27 +34,12 @@ body, html {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
-    padding: 20px;
+    padding: 50px;
     opacity: 0.8;
     background-color: #f0f0f0;
     opacity: 1;
     background-image:  linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(to right, var(--color-grid) 1px, var(--color-background) 1px);
     background-size: 80px 80px;
-}
-
-header {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 10px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--color-accent);
 }
 
 nav {
@@ -251,11 +237,13 @@ footer {
 }
 
 header {
-    height: 60px;
+    grid-column: 1 / -1;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    height: 60px;
     padding: 0 20px;
-    background-color: var(--color-background);
+    background-color: var(--color-section-bg);
     border: 2px solid var(--color-accent);
 }
 
@@ -305,4 +293,37 @@ header {
         flex: 1 1 calc(100% - 20px);
         max-width: calc(100% - 20px);
     }
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.project-item, .experience-item {
+    transition: all 0.3s ease;
+}
+
+.project-item:hover, .experience-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.project-item::before, .experience-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.project-item:hover::before, .experience-item:hover::before {
+    opacity: 1;
 }

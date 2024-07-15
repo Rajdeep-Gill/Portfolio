@@ -110,7 +110,7 @@ function animateCircles() {
     y += (nextCircle.y - y) * 0.3;
   });
  
-  requestAnimationFrame(animateCircles);
+  requestAnimationFrame(animateCircles);  
 }
 
 animateCircles();
@@ -140,12 +140,12 @@ socialIcons.forEach((icon) => {
     });
 });
 
-const phrases = ["Welcome to my portfolio", "Rajdeep Gill", "Computer Engineering Student", ];
+const phrases = ["Welcome to my portfolio!"];
 let phraseIndex = 0;
 let letterIndex = 0;
 const typingSpeed = 100;
 const erasingSpeed = 50;
-const newPhraseDelay = 2000;
+const newPhraseDelay = 1000;
 const typingElement = document.querySelector('.typing-text');
 
 function printLetters(phrase) {
@@ -156,21 +156,30 @@ function printLetters(phrase) {
             printLetters(phrase);
         }, typingSpeed);
     } else {
-        setTimeout(eraseLetters, newPhraseDelay);
+        //setTimeout(eraseLetters, newPhraseDelay);
+        setTimeout( () => {
+            if (phraseIndex < phrases.length - 1) {
+                letterIndex = 0;
+                phraseIndex = (phraseIndex + 1)
+                printLetters(phrases[phraseIndex]);
+            }
+        }, newPhraseDelay
+        )
     }
 }
 
-function eraseLetters() {
-    if (letterIndex > 0) {
-        typingElement.textContent = typingElement.textContent.slice(0, -1);
-        letterIndex -= 1;
-        setTimeout(eraseLetters, erasingSpeed);
-    } else {
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(function() {
-            printLetters(phrases[phraseIndex]);
-        }, typingSpeed);
-    }
-}
+// function eraseLetters() {
+//     if (letterIndex > 0) {
+//         typingElement.textContent = typingElement.textContent.slice(0, -1);
+//         letterIndex -= 1;
+//         setTimeout(eraseLetters, erasingSpeed);
+//     } else {
+//         phraseIndex = (phraseIndex + 1) % phrases.length;
+//         setTimeout(function() {
+//             printLetters(phrases[phraseIndex]);
+//         }, typingSpeed);
+//     }
+//}
 
 printLetters(phrases[phraseIndex]);
+
