@@ -1,7 +1,7 @@
 :root {
     --color-background: #f0f0f0;
     --color-text: #1a1a1a;
-    --color-accent: #344a61;
+    --color-accent: #201488;
     --color-hover: #e0e0e0;
     --color-grid: #cccccc;
     --color-cursor: #ff4500;
@@ -10,7 +10,7 @@
     --border-color: #1a1a1a;
     --shadow-color: rgba(0, 0, 0, 0.25); /* Darker shadow */
     --shadow-hover-color: rgba(0, 0, 0, 0.35); /* Even darker shadow on hover */
-    --progress-bar-color: #344a61; /* Color for the progress indicator */
+    --progress-bar-color: #201488; /* Color for the progress indicator */
 }
 
 body {
@@ -244,9 +244,12 @@ header {
     height: 60px;
     padding: 0 20px;
     background-color: var(--color-section-bg);
-    border: 2px solid var(--color-accent);
+    border: 2px solid;
 }
 
+header:hover{
+    color: var(--color-accent);
+}
 .typing-container {
     font-family: 'Courier New', monospace;
     font-size: 24px;
