@@ -10,8 +10,16 @@
     --border-color: #1a1a1a;
     --shadow-color: rgba(0, 0, 0, 0.25); /* Darker shadow */
     --shadow-hover-color: rgba(0, 0, 0, 0.35); /* Even darker shadow on hover */
+    --progress-bar-color: #344a61; /* Color for the progress indicator */
 }
 
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -26,10 +34,11 @@ body, html {
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
     padding: 20px;
-    background-image: 
-        linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
-    background-size: 8.33% 100%, 100% 50px;
+    opacity: 0.8;
+    background-color: #f0f0f0;
+    opacity: 1;
+    background-image:  linear-gradient(var(--color-grid) 1px, transparent 1px), linear-gradient(to right, var(--color-grid) 1px, var(--color-background) 1px);
+    background-size: 80px 80px;
 }
 
 header {
@@ -47,34 +56,74 @@ header {
     color: var(--color-accent);
 }
 
+nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 0 0 0; /* Remove bottom padding */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Progress indicator */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: var(--color-hover);
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--progress-bar-color);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
 nav ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0 0 10px 0; /* Add bottom padding to the ul instead */
+    margin: 0;
     display: flex;
+    justify-content: space-around;
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin: 0;
 }
 
 nav ul li a {
     color: var(--color-text);
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 14px;
     padding: 10px 15px;
     display: inline-block;
     position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li a.active {
     color: var(--color-accent);
     background-color: var(--color-hover);
-    padding: 15px 20px;
-    margin: -5px -5px;
-    z-index: 1;
     border-radius: 4px;
-    transition: background-color 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+}
+
+/* Hide nav initially */
+nav {
+    transform: translateY(100%);
+}
+
+/* Show nav when .show-nav class is added */
+nav.show-nav {
+    transform: translateY(0);
+}
+
+/* Add some bottom padding to the main content to prevent overlap with the nav */
+main {
+    padding-bottom: 60px;
 }
 
 main {
@@ -201,8 +250,31 @@ footer {
     gap: 20px;
 }
 
+header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-accent);
+}
 
+.typing-container {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: var(--color-accent);
+}
 
+.typing-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
 
 @keyframes blink {
     0% { 
