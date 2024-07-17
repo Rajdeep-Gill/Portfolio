@@ -72,78 +72,68 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 });
 
+const socialIcons = document.querySelectorAll(".social-icon");
+
+
+const projectItems = document.querySelectorAll(".project-item");
+const experienceItems = document.querySelectorAll(".experience-item");
+const navItems = document.querySelectorAll("nav ul li a");
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
-
-const colors = [
-  '#000000'
-];
+const selectedElements = [...socialIcons, ...projectItems, ...experienceItems, ...navItems];
 
 circles.forEach(function (circle, index) {
-  circle.x = 0;
-  circle.y = 0;
-  circle.style.backgroundColor = colors[index % colors.length];
+    circle.x = 0;
+    circle.y = 0;
 });
 
 window.addEventListener("mousemove", function(e){
-  coords.x = e.clientX;
-  coords.y = e.clientY;
-  
+    coords.x = e.clientX;
+    coords.y = e.clientY;
 });
 
 function animateCircles() {
+    let x = coords.x;
+    let y = coords.y;
   
-  let x = coords.x;
-  let y = coords.y;
-  
-  circles.forEach(function (circle, index) {
-    circle.style.left = x - 12 + "px";
-    circle.style.top = y - 12 + "px";
+    circles.forEach(function (circle, index) {
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
     
-    circle.style.scale = (circles.length - index) / circles.length;
+        circle.style.scale = (circles.length - index) / circles.length;
     
-    circle.x = x;
-    circle.y = y;
+        circle.x = x;
+        circle.y = y;
 
-    const nextCircle = circles[index + 1] || circles[0];
-    x += (nextCircle.x - x) * 0.3;
-    y += (nextCircle.y - y) * 0.3;
-  });
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+    });
  
-  requestAnimationFrame(animateCircles);  
+    requestAnimationFrame(animateCircles);
 }
 
 animateCircles();
 
-
-//reduce opaticty of circle when certain elements are hovered over
-const socialIcons = document.querySelectorAll('.social-icons a');
-const projectItems = document.querySelectorAll('.project-item');
-const experienceItems = document.querySelectorAll('.experience-item');
-const navItems = document.querySelectorAll('nav ul li a');
-
-selectedElements = [...socialIcons, ...projectItems, ...experienceItems, ...navItems];
-
-document.addEventListener('mousemove', (e) => {
-    circles.forEach((circle) => {
-        circle.style.left = `${e.clientX}px`;
-        circle.style.top = `${e.clientY}px`;
-    });
-});
-
-selectedElements.forEach((icon) => {
-    icon.addEventListener('mouseover', () => {
-        circles.forEach((circle) => {
-            circle.style.opacity = '0.1'; // Change opacity on hover
+selectedElements.forEach((element) => {
+    element.addEventListener('mouseenter', () => {
+        circles.forEach((circle, index) => {
+            if (index === 0) {
+                circle.classList.add('hover');
+            } else {
+                circle.style.opacity = '0';
+            }
         });
     });
 
-    icon.addEventListener('mouseout', () => {
-        circles.forEach((circle) => {
-            circle.style.opacity = '1'; // Revert opacity when not hovering
+    element.addEventListener('mouseleave', () => {
+        circles.forEach((circle, index) => {
+            circle.classList.remove('hover');
+            circle.style.opacity = '1';
         });
     });
 });
+
 
 const phrases = ["Welcome to my portfolio!"];
 let phraseIndex = 0;

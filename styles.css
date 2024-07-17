@@ -1,16 +1,16 @@
 :root {
-    --color-background: #ffffff;
-    --color-text: #1a1a1a;
-    --color-accent: #ff6f61;
-    --color-hover: #f0f0f0;
-    --color-grid: #e5e5e5;
-    --color-cursor: #ff1493;
-    --font-main: 'Courier New', monospace;
-    --color-section-bg: #f7f7f7;
-    --border-color: #1a1a1a;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --shadow-hover-color: rgba(0, 0, 0, 0.4);
-    --progress-bar-color: #ff6f61;
+    --color-background: #fff0f0;
+    --color-text: #000000;
+    --color-accent: #ff3333;
+    --color-hover: #ffe6e6;
+    --color-grid: #ffcccc;
+    --color-cursor: #ff8080;
+    --font-main: 'Courier', monospace;
+    --color-section-bg: #fff9f9;
+    --border-color: #000000;
+    --shadow-color: rgba(255, 0, 0, 0.1);
+    --shadow-hover-color: rgba(255, 0, 0, 0.2);
+    --progress-bar-color: #ff4d4d;
 }
 
 
@@ -342,3 +342,15 @@ header:hover{
 .project-item:hover::before, .experience-item:hover::before {
     opacity: 1;
 }
+
+
+.circle.hover {
+    background-color: blue;
+    mix-blend-mode: difference;
+}
+
+.circle.hover:nth-child(1) {
+    transform: scale(1.5);
+}
+
+
