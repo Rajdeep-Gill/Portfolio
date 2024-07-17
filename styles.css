@@ -1,17 +1,19 @@
 :root {
-    --color-background: #f0f0f0;
+    --color-background: #ffffff;
     --color-text: #1a1a1a;
-    --color-accent: #201488;
-    --color-hover: #e0e0e0;
-    --color-grid: #cccccc;
-    --color-cursor: #ff4500;
+    --color-accent: #ff6f61;
+    --color-hover: #f0f0f0;
+    --color-grid: #e5e5e5;
+    --color-cursor: #ff1493;
     --font-main: 'Courier New', monospace;
-    --color-section-bg: #ffffff; /* Single color for all sections */
+    --color-section-bg: #f7f7f7;
     --border-color: #1a1a1a;
-    --shadow-color: rgba(0, 0, 0, 0.25); /* Darker shadow */
-    --shadow-hover-color: rgba(0, 0, 0, 0.35); /* Even darker shadow on hover */
-    --progress-bar-color: #201488; /* Color for the progress indicator */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover-color: rgba(0, 0, 0, 0.4);
+    --progress-bar-color: #ff6f61;
 }
+
+
 
 body {
     scrollbar-width: none;
@@ -98,6 +100,7 @@ nav ul li a:hover, nav ul li a.active {
     color: var(--color-accent);
     background-color: var(--color-hover);
     border-radius: 4px;
+    font-weight: bold;
 }
 
 /* Hide nav initially */
@@ -143,6 +146,11 @@ main {
 h1, h2 {
     color: var(--color-accent);
     text-transform: uppercase;
+}
+
+h2 {
+    margin-left: 10px;
+    margin-top: 0px;
 }
 
 footer {
