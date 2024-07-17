@@ -116,8 +116,13 @@ function animateCircles() {
 animateCircles();
 
 
-//reduce opaticty of circle when social media icon is hovered
+//reduce opaticty of circle when certain elements are hovered over
 const socialIcons = document.querySelectorAll('.social-icons a');
+const projectItems = document.querySelectorAll('.project-item');
+const experienceItems = document.querySelectorAll('.experience-item');
+const navItems = document.querySelectorAll('nav ul li a');
+
+selectedElements = [...socialIcons, ...projectItems, ...experienceItems, ...navItems];
 
 document.addEventListener('mousemove', (e) => {
     circles.forEach((circle) => {
@@ -126,7 +131,7 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-socialIcons.forEach((icon) => {
+selectedElements.forEach((icon) => {
     icon.addEventListener('mouseover', () => {
         circles.forEach((circle) => {
             circle.style.opacity = '0.1'; // Change opacity on hover
@@ -156,7 +161,6 @@ function printLetters(phrase) {
             printLetters(phrase);
         }, typingSpeed);
     } else {
-        //setTimeout(eraseLetters, newPhraseDelay);
         setTimeout( () => {
             if (phraseIndex < phrases.length - 1) {
                 letterIndex = 0;
@@ -167,19 +171,6 @@ function printLetters(phrase) {
         )
     }
 }
-
-// function eraseLetters() {
-//     if (letterIndex > 0) {
-//         typingElement.textContent = typingElement.textContent.slice(0, -1);
-//         letterIndex -= 1;
-//         setTimeout(eraseLetters, erasingSpeed);
-//     } else {
-//         phraseIndex = (phraseIndex + 1) % phrases.length;
-//         setTimeout(function() {
-//             printLetters(phrases[phraseIndex]);
-//         }, typingSpeed);
-//     }
-//}
 
 printLetters(phrases[phraseIndex]);
 
