@@ -177,6 +177,18 @@ footer {
     transition: box-shadow 0.3s ease;
     max-width: calc(33.333% - 20px);
 }
+.experience-item h3, .project-item h3 {
+    margin-bottom: 0;
+}
+.experience-item h4, .project-item h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.experience-item h5, .project-item h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 
 .experience-item:hover, .project-item:hover {
     box-shadow: 0 0 25px var(--shadow-hover-color); /* Stronger shadow on hover */

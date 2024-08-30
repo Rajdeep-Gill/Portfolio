@@ -80,7 +80,8 @@ const experienceItems = document.querySelectorAll(".experience-item");
 const navItems = document.querySelectorAll("nav ul li a");
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
-const selectedElements = [...socialIcons, ...projectItems, ...experienceItems, ...navItems];
+const email = document.querySelector(".email");
+const selectedElements = [...socialIcons, ...projectItems, ...experienceItems, ...navItems, email];
 
 circles.forEach(function (circle, index) {
     circle.x = 0;
